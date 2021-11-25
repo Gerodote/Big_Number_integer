@@ -6,10 +6,13 @@
 #include <cstdint>
 #include <compare>
 #include <ostream>
-#include <format>
 #include <exception>
 #include <algorithm>
 #include <cmath>
+
+#if __cpp_lib_format
+#include <format>
+#endif // __cpp_lib_format
 
 namespace bn
 {
