@@ -387,7 +387,7 @@ std::pair<bool, std::string> slice_test() {
 	bool res_ = true;
 	std::stringstream mylog;
 	mylog << "Test name: " << __FUNCTION__ << std::endl;
-	uint64_t ui64_mine = 11794537904770359415; /* just a specific number: 1010 0011 1010 1110  1001 1101 1011 1011  1111 0111 1011 0111  1010 0000 0111 0111‬ */
+	uint64_t ui64_mine = 11794537904770359415; /* just a specific number: 1010 0011 1010 1110  1001 1101 1011 1011  1111 0111 10110111 1010 0000 0111 0111*/
 	bn::BigNum const t1(ui64_mine);
 	uint32_t res1 = t1.GetSlice(12);
 	mylog << std::format("{:X}", res1) << " =? " << std::format("{:X}", 3686759290);
