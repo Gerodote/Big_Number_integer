@@ -12,6 +12,7 @@ size_t myCompileTimeSize(T(&)[N]) {
 }
 
 std::pair<bool, std::string>(*arrayOfTests[])() = {
+#if __cpp_lib_format
 	uint32_t_test_reprbinary,
 	int32_t_test_reprbinary,
 	constuint32_t_test_reprbinary,
@@ -25,8 +26,11 @@ std::pair<bool, std::string>(*arrayOfTests[])() = {
 	uint64_compare_test,
 	constint64_t_test_reprdecimal,
 	constint64_t_test_reprdecimal_op_ostream, 
-	constint64_t_test_operator_plus,
-	constint64_t_test_operator_plus_assignment
+#endif // _cpp_lib_format
+	int64_t_test_operator_plus,
+	int64_t_test_operator_plus_assignment,
+	int64_t_test_operator_minus,
+	int64_t_test_operator_minus_assign
 };
 
 int main()

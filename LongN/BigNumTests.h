@@ -7,6 +7,8 @@
 
 #include "BigNum.h"
 
+#if __cpp_lib_format
+
 std::pair<bool, std::string> uint32_t_test_reprbinary() {
 	bool res_ = true;
 	std::stringstream mylog;
@@ -34,10 +36,10 @@ std::pair<bool, std::string> uint32_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui32_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", ui32_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -45,10 +47,10 @@ std::pair<bool, std::string> uint32_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui32_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", ui32_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -81,10 +83,10 @@ std::pair<bool, std::string> int32_t_test_reprbinary() {
 		mylog << std::format("{:x}", i32_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", i32_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -92,10 +94,10 @@ std::pair<bool, std::string> int32_t_test_reprbinary() {
 		mylog << std::format("{:x}", i32_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", i32_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -128,10 +130,10 @@ std::pair<bool, std::string> constuint32_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui32_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", ui32_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -139,10 +141,10 @@ std::pair<bool, std::string> constuint32_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui32_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", ui32_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -175,10 +177,10 @@ std::pair<bool, std::string> constint32_t_test_reprbinary() {
 		mylog << std::format("{:x}", i32_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", i32_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -186,10 +188,10 @@ std::pair<bool, std::string> constint32_t_test_reprbinary() {
 		mylog << std::format("{:x}", i32_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", i32_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -222,10 +224,10 @@ std::pair<bool, std::string> uint64_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui64_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", ui64_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -233,10 +235,10 @@ std::pair<bool, std::string> uint64_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui64_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", ui64_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -269,10 +271,10 @@ std::pair<bool, std::string> int64_t_test_reprbinary() {
 		mylog << std::format("{:x}", i64_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", i64_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -280,10 +282,10 @@ std::pair<bool, std::string> int64_t_test_reprbinary() {
 		mylog << std::format("{:x}", i64_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", i64_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -316,10 +318,10 @@ std::pair<bool, std::string> constuint64_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui64_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", ui64_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -327,10 +329,10 @@ std::pair<bool, std::string> constuint64_t_test_reprbinary() {
 		mylog << std::format("{:x}", ui64_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", ui64_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -363,10 +365,10 @@ std::pair<bool, std::string> constint64_t_test_reprbinary() {
 		mylog << std::format("{:x}", i64_m1) << " => " << std::endl << t6.to_str(0) << std::endl;
 		res_ &= (std::format("{:x}", i64_m1) == t6.to_str(0));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 0 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	try {
@@ -374,10 +376,10 @@ std::pair<bool, std::string> constint64_t_test_reprbinary() {
 		mylog << std::format("{:x}", i64_m1) << " => " << std::endl << t7.to_str(1) << std::endl;
 		res_ &= (std::format("{:x}", i64_m1) == t7.to_str(1));
 	}
-	catch (bn::WrongBase) {
+	catch (bn::WrongBase&) {
 		mylog << "base 1 catched" << std::endl;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 	}
 	return std::make_pair(res_, mylog.str());
@@ -398,11 +400,11 @@ std::pair<bool, std::string> slice_test() {
 	try {
 		uint32_t res3 = t1.GetSlice(65);
 	}
-	catch (std::out_of_range) {
+	catch (std::out_of_range&) {
 		mylog << "bad slice index catched" << std::endl;
 		res_ &= 1;
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		mylog << "Sth really stranged happened" << std::endl;
 		res_ &= false;
 	}
@@ -558,8 +560,9 @@ std::pair<bool, std::string> constint64_t_test_reprdecimal_op_ostream() {
 	return std::make_pair(res_, mylog.str());
 }
 
+#endif
 
-std::pair<bool, std::string> constint64_t_test_operator_plus() {
+std::pair<bool, std::string> int64_t_test_operator_plus() {
 
 	std::stringstream mylog;
 	mylog << "Test name: " << __FUNCTION__ << std::endl;
@@ -579,8 +582,13 @@ std::pair<bool, std::string> constint64_t_test_operator_plus() {
 			{ -2, 1, -1},
 			{-2, -2, -4},
 			{-8589934591, -4294967296, -12884901887},
+			{-4294967296, -8589934591, -12884901887},
 			{-8589934591, 4294967296, -4294967295},
-			{-8589934592, 4294967296, -4294967296}
+			{-8589934592, 4294967296, -4294967296},
+			{4294967296 ,-8589934592,  -4294967296},
+			{8589934592, -4294967296, 4294967296},
+			{-4294967296 ,8589934592,  4294967296}
+			
 		}
 	};
 
@@ -603,7 +611,7 @@ std::pair<bool, std::string> constint64_t_test_operator_plus() {
 }
 
 
-std::pair<bool, std::string> constint64_t_test_operator_plus_assignment() {
+std::pair<bool, std::string> int64_t_test_operator_plus_assignment() {
 
 	std::stringstream mylog;
 	mylog << "Test name: " << __FUNCTION__ << std::endl;
@@ -623,8 +631,12 @@ std::pair<bool, std::string> constint64_t_test_operator_plus_assignment() {
 			{ -2, 1, -1},
 			{-2, -2, -4},
 			{-8589934591, -4294967296, -12884901887},
+			{-4294967296, -8589934591, -12884901887},
 			{-8589934591, 4294967296, -4294967295},
-			{-8589934592, 4294967296, -4294967296}
+			{-8589934592, 4294967296, -4294967296},
+			{4294967296 ,-8589934592,  -4294967296},
+			{8589934592, -4294967296, 4294967296},
+			{-4294967296 ,8589934592,  4294967296}
 		}
 	};
 
@@ -645,5 +657,105 @@ std::pair<bool, std::string> constint64_t_test_operator_plus_assignment() {
 	}
 	return std::make_pair(result, mylog.str());
 }
+
+std::pair<bool, std::string> int64_t_test_operator_minus() {
+
+	std::stringstream mylog;
+	mylog << "Test name: " << __FUNCTION__ << std::endl;
+	bool result = true;
+
+	bn::BigNum(*minus)(int64_t, int64_t) = [](int64_t left, int64_t right) -> bn::BigNum { return left - right; };
+
+	std::pair< bn::BigNum(*)(int64_t, int64_t), std::vector< std::tuple<int64_t, int64_t, int64_t> > > tests =
+	{ minus,
+		{
+			{1,1,0},
+			{0xFFFFFFFF, 1, 0xFFFFFFFE},
+			{0xFFFFFFFF, 0xFF, 0xFFFFFF00},
+			{1, -1, 2},
+			{2, -1, 3},
+			{-1, 1, -2},
+			{ -2, 1, -3},
+			{-2, -2, 0},
+			{-8589934591, -4294967296, -4294967295},
+			{-4294967296, -8589934591, 4294967295},
+			{-8589934591, 4294967296, -12884901887},
+			{-8589934592, 4294967296, -12884901888},
+			{4294967296 ,-8589934592,  12884901888},
+			{8589934592, -4294967296, 12884901888},
+			{4294967296, -8589934592, 12884901888},
+			{-4294967296 ,8589934592,  -12884901888}
+
+		}
+	};
+
+	try {
+		for (const auto& test_it : tests.second) {
+			bool result_of_current_test = true;
+			result_of_current_test &= (tests.first(std::get<0>(test_it), std::get<1>(test_it)) == std::get<2>(test_it));
+			mylog << " function(" << std::get<0>(test_it) << ", " << std::get<1>(test_it) << ") => " << std::endl <<
+				tests.first(std::get<0>(test_it), std::get<1>(test_it)) << std::endl
+				<< "Expected answer:" << std::get<2>(test_it) << std::endl
+				<< "Is this test passed ? : " << (result_of_current_test ? "yes" : "no  <<<<<<<<<<<<<<<<<<<<<< FAILED") << std::endl << std::endl;
+			result &= result_of_current_test;
+		}
+
+	}
+	catch (std::exception&) {
+		return std::make_pair(false, mylog.str() + "\nUnexpected exception catched, CRITICAL");
+	}
+	return std::make_pair(result, mylog.str());
+}
+
+std::pair<bool, std::string> int64_t_test_operator_minus_assign() {
+
+	std::stringstream mylog;
+	mylog << "Test name: " << __FUNCTION__ << std::endl;
+	bool result = true;
+
+	bn::BigNum(*minus)(int64_t, int64_t) = [](int64_t left, int64_t right) -> bn::BigNum { return left -= right; };
+
+	std::pair< bn::BigNum(*)(int64_t, int64_t), std::vector< std::tuple<int64_t, int64_t, int64_t> > > tests =
+	{ minus,
+		{
+			{1,1,0},
+			{0xFFFFFFFF, 1, 0xFFFFFFFE},
+			{0xFFFFFFFF, 0xFF, 0xFFFFFF00},
+			{1, -1, 2},
+			{2, -1, 3},
+			{-1, 1, -2},
+			{ -2, 1, -3},
+			{-2, -2, 0},
+			{-8589934591, -4294967296, -4294967295},
+			{-4294967296, -8589934591, 4294967295},
+			{-8589934591, 4294967296, -12884901887},
+			{-8589934592, 4294967296, -12884901888},
+			{4294967296 ,-8589934592,  12884901888},
+			{8589934592, -4294967296, 12884901888},
+			{4294967296, -8589934592, 12884901888},
+			{-4294967296 ,8589934592,  -12884901888}
+
+		}
+	};
+
+	try {
+		for (const auto& test_it : tests.second) {
+			bool result_of_current_test = true;
+			result_of_current_test &= (tests.first(std::get<0>(test_it), std::get<1>(test_it)) == std::get<2>(test_it));
+			mylog << " function(" << std::get<0>(test_it) << ", " << std::get<1>(test_it) << ") => " << std::endl <<
+				tests.first(std::get<0>(test_it), std::get<1>(test_it)) << std::endl
+				<< "Expected answer:" << std::get<2>(test_it) << std::endl
+				<< "Is this test passed ? : " << (result_of_current_test ? "yes" : "no  <<<<<<<<<<<<<<<<<<<<<< FAILED") << std::endl << std::endl;
+			result &= result_of_current_test;
+		}
+
+	}
+	catch (std::exception&) {
+		return std::make_pair(false, mylog.str() + "\nUnexpected exception catched, CRITICAL");
+	}
+	return std::make_pair(result, mylog.str());
+}
+
+
 
 #endif // BIGNUMTESTS_H

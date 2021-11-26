@@ -42,11 +42,7 @@ namespace bn
 		std::vector<uint32_t> _data;
 		// first elements are less important
 
-		// private methods:
-		inline explicit BigNum(bool sign, size_t count, uint32_t const& value) : _sign(sign), _data(count, value) {};
-		inline explicit BigNum(bool sign, std::vector<uint32_t> data) : _sign(sign), _data(data) {};
 
-		std::strong_ordering CompareByAbs(BigNum const& that) const;
 
 	public:
 
@@ -187,7 +183,13 @@ namespace bn
 				res = ((_data[div + 1] << (32 - mod))) | (_data[div] >> mod);
 			else if (div + 1 == _data.size())
 				res = (_data[div] >> mod);
+#if __cpp_lib_format
 			else throw(std::out_of_range(std::format("Incorrect slice. std::vector size is {} , slice index is {}, slice index / 32 is {}", _data.size(), from_which_bit_index, div).c_str()));
+#else
+			else throw(std::out_of_range(("Incorrect slice. std::vector size is " +
+				std::to_str(_data.size()) + ", slice index is" + std::to_str(from_which_bit_index) + 
+				", slice index / 32 is" + std::to_str(div)).c_str());
+#endif // __cpp_lib_format
 			return res;
 		};
 
@@ -197,6 +199,13 @@ namespace bn
 			out << num.to_str();
 			return out;
 		};
+
+
+	private: 		// private methods:
+
+		inline explicit BigNum(bool sign, size_t count, uint32_t const& value) : _sign(sign), _data(count, value) {};
+		inline explicit BigNum(bool sign, std::vector<uint32_t> data) : _sign(sign), _data(data) {};
+		std::strong_ordering CompareByAbs(BigNum const& that) const;
 	};
 
 }

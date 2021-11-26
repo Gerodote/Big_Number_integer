@@ -85,6 +85,8 @@ namespace bn {
 
 				std::strong_ordering result_of_compare = this->CompareByAbs(that);
 				if (std::strong_ordering::greater == result_of_compare) {
+					res._sign = this->_sign;
+
 					// copy from bigger number to res
 					for (; this_iter != this->_data.cend(); ++this_iter, ++res_iter) {
 						*res_iter = *this_iter;
@@ -108,7 +110,30 @@ namespace bn {
 					}
 
 				}
-				else if (std::strong_ordering::less == result_of_compare) {}
+				else if (std::strong_ordering::less == result_of_compare) {					// copy from bigger number to res
+					res._sign = that._sign;
+
+					for (; that_iter != that._data.cend(); ++that_iter, ++res_iter) {
+						*res_iter = *that_iter;
+					}
+
+					//this - that
+					res_iter = res._data.begin();
+					uint_fast8_t tmp = 0;
+					for (; (this_iter != this->_data.cend()) || (std::next(res_iter) != res._data.end()); ++this_iter, ++res_iter) {
+						if (*(res_iter) < static_cast<uint64_t>(*(this_iter)) + tmp) {
+							*(res_iter) = static_cast<uint32_t>(_base - (static_cast<uint64_t>(*(this_iter)) + tmp - static_cast<uint64_t>(*(res_iter))));
+							tmp = 1;
+						}
+						else {
+
+							*(res_iter) -= tmp;
+							*(res_iter) -= (*(this_iter));
+							tmp = 0;
+						}
+						//*res_iter += *that_iter;
+					}
+				}
 				else { res._data = { 0 }; }
 			}
 
@@ -200,7 +225,7 @@ namespace bn {
 				}
 			}
 		};
-		if (is_null) { res += '0'; }
+		if (is_null) { res = "0"; }
 		else {
 			switch (base) {
 #if __cpp_lib_format
